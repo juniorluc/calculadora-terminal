@@ -1,33 +1,34 @@
-print('Calculadora de Terminal\n')
-print('1. Soma\n2. Subtração\n3. Multiplicação\n4. Divisão')
+from operadores import operacoes
 
-try:
-    operacao = int(input('\nEscolha de 1 a 4 qual operação quer realizar: '))
-    if operacao > 4:
-        print('\nErro: Nenhuma das opções válidas foram digitadas.')
+def menu_calculadora():
+    print("""
+█▀▀ ▄▀█ █░░ █▀▀ █░█ █░░ ▄▀█ █▀▄ █▀█ █▀█ ▄▀█
+█▄▄ █▀█ █▄▄ █▄▄ █▄█ █▄▄ █▀█ █▄▀ █▄█ █▀▄ █▀█""")  
+    print('\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬')
+    print('\n+. Soma\n-. Subtração\n*. Multiplicação\n/. Divisão\n0. Para fechar a calculadora.')
+def calcula_operacoes():
+    while True:
+        try: 
+            operador = input('\nQual operação deseja realizar? (+, -, *, / ou 0 para sair): ')
 
-    primeiro_numero = int(input('\nDigite o primeiro número: '))
-    segundo_numero = int(input('Digite o segundo número: '))
+            if operador == '0':
+                print('\nObrigado por usar a calculadora')
+                break
 
-    if operacao == 1:
-        print('\nVocê escolheu a opção de Somar')
-        somar = primeiro_numero + segundo_numero
-        print(f'A soma de {primeiro_numero} + {segundo_numero} é igual a {somar}')
-    elif operacao == 2:
-        print('\nVocê escolheu a opção de Subtrair')
-        subtrair = primeiro_numero - segundo_numero
-        print(f'A subtração de {primeiro_numero} - {segundo_numero} é igual a {subtrair}')
-    elif operacao == 3:
-        print('\nVocê escolheu a opção de Multiplicar')
-        multiplicar = primeiro_numero * segundo_numero
-        print(f'A multiplicação de {primeiro_numero} * {segundo_numero} é igual a {multiplicar}')
-    elif operacao == 4:
-        print('\nVocê escolheu a opção de Dividir')
-        divisao = primeiro_numero / segundo_numero
-        print(f'A divisão de {primeiro_numero} / {segundo_numero} é igual a {divisao}')
+            primeiro_numero = int(input('\nDigite o primeiro número: '))
+            segundo_numero = int(input('Digite o segundo número: '))
+            
+            # Pega a chave do dicionário operacoes e seu valor através da variável operador.
+            funcao_operacao = operacoes.get(operador)
+            resultado = funcao_operacao(primeiro_numero, segundo_numero)
 
-except ValueError:
-    print('\nErro: Não é permitido letras ou simbolos. Escolha um número de 1 a 4.')
-    
+            print(f'O resultado da operação é: {resultado}')
 
-
+        except ValueError: 
+            print('Erro: Digite apenas as operações possíveis.')
+            continue
+        except TypeError:
+            print('Erro: Escolha uma das opções válida (+, -, *, / ou 0 para sair).')
+      
+menu_calculadora()
+calcula_operacoes()
