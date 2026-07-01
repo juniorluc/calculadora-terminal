@@ -14,6 +14,16 @@ Uma calculadora desenvolvida em **Python** para execução diretamente no termin
 - [x] ⚠️ Tratamento de erros (try / except)
 - [x] 🚪 Opção para encerrar o programa
 
+## 📁 Estrutura do projeto
+```text
+calculadora-terminal/
+│
+├── __pycache__/
+├── main.py
+├── operadores.py
+└── README.md
+```
+
 ## ⌨️ Exemplo de uso
 <img width="467" height="348" alt="Calculadora" src="https://github.com/user-attachments/assets/d99b7add-a996-408a-b535-33f4212e4ed3" />
 
